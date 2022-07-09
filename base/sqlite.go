@@ -2,7 +2,6 @@ package base
 
 import (
 	"log"
-	"os"
 
 	"github.com/joho/godotenv"
 	"gorm.io/driver/sqlite"
@@ -16,7 +15,7 @@ func Db_sqlite_open() *gorm.DB {
 		log.Println("Error loading .env file")
 	}
 
-	db, err := gorm.Open(sqlite.Open(os.Getenv("DATABASE")), &gorm.Config{})
+	db, err := gorm.Open(sqlite.Open("db.db"), &gorm.Config{})
 	if err != nil {
 		panic("failed to connect database")
 	}
